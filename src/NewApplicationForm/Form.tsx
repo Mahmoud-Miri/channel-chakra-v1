@@ -1,24 +1,12 @@
-import { Controller, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 
-import {
-  Box,
-  Stack,
-  Button,
-  useToast,
-  ChakraProvider,
-  FormControl,
-  FormLabel,
-  Input,
-  Text,
-  Flex,
-  Divider,
-} from "@chakra-ui/react";
+import { Box, Button, ChakraProvider, Stack, useToast } from "@chakra-ui/react";
 import * as yup from "yup";
-import Card from "../Card";
+import Card from "../components/Card";
 import ChannelSelect from "./ChannelSelect";
 import CustomerInfo from "./CustomerInfo";
-import FloatingFormLabel from "../FloatingFormLabel";
+import AddProducts from "./AddProducts";
 
 export interface FormData {
   channel: string;
@@ -69,81 +57,11 @@ const Form = () => {
               <ChannelSelect control={control} errors={errors} />
             </Card>
             <Card title="Add Products">
-              <Flex>
-                <FormControl isInvalid={!!errors.productName} mr={2} isRequired>
-                  <FormLabel htmlFor="productName">Product Name</FormLabel>
-                  <Controller
-                    name="productName"
-                    control={control}
-                    defaultValue=""
-                    rules={{ required: "Product Name is required" }}
-                    render={({ field }) => (
-                      <Input
-                        placeholder="Product Name"
-                        id="productName"
-                        {...field}
-                      />
-                    )}
-                  />
-                  {errors.productName && (
-                    <Text color="red.500" textAlign="left">
-                      {errors.productName.message}
-                    </Text>
-                  )}
-                </FormControl>
-
-                <FormControl
-                  isInvalid={!!errors.productQuantity}
-                  mr={2}
-                  isRequired
-                >
-                  <FormLabel htmlFor="productQuantity">
-                    Product Quantity
-                  </FormLabel>
-                  <Controller
-                    name="productQuantity"
-                    control={control}
-                    rules={{ required: "Product Quantity is required" }}
-                    render={({ field }) => (
-                      <Input placeholder="Product Quantity" {...field} />
-                    )}
-                  />
-                  {errors.productQuantity && (
-                    <Text color="red.500" textAlign="left">
-                      {errors.productQuantity.message}
-                    </Text>
-                  )}
-                </FormControl>
-
-                <FormControl isInvalid={!!errors.productPrice} isRequired>
-                  <FormLabel htmlFor="productPrice">Product Price</FormLabel>
-                  <Controller
-                    name="productPrice"
-                    control={control}
-                    rules={{ required: "Product Price is required" }}
-                    render={({ field }) => (
-                      <Input placeholder="Product Price" {...field} />
-                    )}
-                  />
-                  {errors.productPrice && (
-                    <Text color="red.500" textAlign="left">
-                      {errors.productPrice.message}
-                    </Text>
-                  )}
-                </FormControl>
-              </Flex>
-              <Divider mt={4} />
-              <Flex>
-                <Button
-                  type="submit"
-                  mt="4"
-                  size="md"
-                  alignSelf="flex-start"
-                  colorScheme="blue"
-                >
-                  Add Product
-                </Button>
-              </Flex>
+              <AddProducts
+                control={control}
+                errors={errors}
+                onSubmit={() => console.log("button pressed")}
+              />
             </Card>
             <Card title="Customer Information">
               <CustomerInfo control={control} errors={errors} />

@@ -1,5 +1,5 @@
-import { FormControl, FormLabel, Select, Box, Text } from "@chakra-ui/react";
-import { Control, FieldErrors, Controller } from "react-hook-form";
+import { Box, FormControl, FormLabel, Select, Text } from "@chakra-ui/react";
+import { Control, Controller, FieldErrors } from "react-hook-form";
 import { FormData } from "./Form";
 
 interface ChannelSelectProps {

@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { Box, Text, Divider } from "@chakra-ui/react";
+import { Box, Divider, Text } from "@chakra-ui/react";
 
 type CardProps = {
   title: string;

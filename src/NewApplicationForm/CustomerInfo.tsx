@@ -1,12 +1,12 @@
 import {
+  Flex,
   FormControl,
   FormLabel,
   Input,
   Stack,
   Text,
-  Flex,
 } from "@chakra-ui/react";
-import { Control, FieldErrors, Controller } from "react-hook-form";
+import { Control, Controller, FieldErrors } from "react-hook-form";
 import { FormData } from "./Form";
 
 interface CustomerInfoProps {
@@ -18,7 +18,7 @@ const CustomerInfo = ({ control, errors }: CustomerInfoProps) => {
   return (
     <Stack spacing={4}>
       <Flex>
-        <FormControl isInvalid={!!errors.name} mr={2} isRequired>
+        <FormControl isInvalid={!!errors.name} mr={4} isRequired>
           <FormLabel htmlFor="name">Name</FormLabel>
           <Controller
             name="name"
@@ -51,7 +51,7 @@ const CustomerInfo = ({ control, errors }: CustomerInfoProps) => {
         </FormControl>
       </Flex>
       <Flex>
-        <FormControl isInvalid={!!errors.email} mr="2" isRequired>
+        <FormControl isInvalid={!!errors.email} mr={4} isRequired>
           <FormLabel htmlFor="email">Email</FormLabel>
           <Controller
             name="email"
