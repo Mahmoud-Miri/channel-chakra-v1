@@ -52,6 +52,7 @@ const AddProducts: FC<AddProductsProps> = ({ control, errors, onSubmit }) => {
             name="productQuantity"
             control={control}
             rules={{ required: "Product Quantity is required" }}
+            defaultValue={0}
             render={({ field }) => <Input placeholder=" " {...field} />}
           />
           <FormLabel htmlFor="productQuantity">Product Quantity</FormLabel>
@@ -72,6 +73,7 @@ const AddProducts: FC<AddProductsProps> = ({ control, errors, onSubmit }) => {
             name="productPrice"
             control={control}
             rules={{ required: "Product Price is required" }}
+            defaultValue={0}
             render={({ field }) => <Input placeholder=" " {...field} />}
           />
           <FormLabel htmlFor="productPrice">Product Price</FormLabel>

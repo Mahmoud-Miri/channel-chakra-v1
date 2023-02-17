@@ -9,8 +9,12 @@ interface ChannelSelectProps {
 
 const ChannelSelect = ({ control, errors }: ChannelSelectProps) => {
   return (
-    <FormControl isInvalid={!!errors.channel} isRequired>
-      <FormLabel htmlFor="channel">Channels</FormLabel>
+    <FormControl
+      isInvalid={!!errors.channel}
+      isRequired
+      variant="floating"
+      mt={2}
+    >
       <Controller
         name="channel"
         control={control}
@@ -29,6 +33,8 @@ const ChannelSelect = ({ control, errors }: ChannelSelectProps) => {
           </Select>
         )}
       />
+      <FormLabel>Channel</FormLabel>
+
       {errors.channel && (
         <Box alignSelf="">
           <Text textAlign="left" color="red.500">
