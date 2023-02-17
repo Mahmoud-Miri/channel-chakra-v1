@@ -17,7 +17,11 @@ const ChannelSelect = ({ control, errors }: ChannelSelectProps) => {
         defaultValue=""
         rules={{ required: "Channel is required" }}
         render={({ field }) => (
-          <Select aria-label="Channels" placeholder="Select channel" {...field}>
+          <Select
+            aria-label="Channels"
+            placeholder="Select a channel"
+            {...field}
+          >
             <option value="email">Email</option>
             <option value="phone">Phone</option>
             <option value="sms">SMS</option>
