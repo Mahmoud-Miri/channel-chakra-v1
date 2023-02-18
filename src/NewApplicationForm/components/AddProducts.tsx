@@ -8,12 +8,14 @@ import {
   FormControl,
   FormErrorMessage,
   FormLabel,
+  HStack,
   Icon,
   Input,
 } from "@chakra-ui/react";
 import { FaTrash } from "react-icons/fa";
 import { NumericFormat } from "react-number-format";
 import { NewApplicationFormData } from "../types";
+import FormTextField from "./FormTextField";
 
 interface AddProductsProps {
   control: Control<NewApplicationFormData>;
@@ -24,30 +26,16 @@ interface AddProductsProps {
 const AddProducts: FC<AddProductsProps> = ({ control, errors, onSubmit }) => {
   return (
     <>
-      <Flex>
-        <FormControl
-          mr={4}
+      <HStack spacing={4} mt={2}>
+        <FormTextField
+          name="productName"
+          label="Product Name"
+          control={control}
+          errors={errors}
+          placeholder=" "
           isRequired
-          variant="floating"
-          isInvalid={!!errors.productName}
-        >
-          <Controller
-            name="productName"
-            control={control}
-            defaultValue=""
-            rules={{ required: "Product Name is required" }}
-            render={({ field }) => (
-              <Input
-                aria-label="product name"
-                placeholder=" "
-                id="productName"
-                {...field}
-              />
-            )}
-          />
-          <FormLabel htmlFor="productName">Product Name</FormLabel>
-          <FormErrorMessage>{errors.productName?.message}</FormErrorMessage>
-        </FormControl>
+          rules={{ required: "Product Name is required" }}
+        />
 
         <FormControl
           isInvalid={!!errors.productQuantity}
@@ -113,7 +101,7 @@ const AddProducts: FC<AddProductsProps> = ({ control, errors, onSubmit }) => {
         >
           <Icon as={FaTrash} />
         </Button>
-      </Flex>
+      </HStack>
 
       <Divider mt={4} />
 

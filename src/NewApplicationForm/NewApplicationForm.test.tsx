@@ -37,7 +37,7 @@ describe("NewApplicationForm", () => {
     const channelSelect = screen.getByLabelText("channel");
     fireEvent.change(channelSelect, { target: { value: "email" } });
 
-    const productNameInput = screen.getByLabelText("product name");
+    const productNameInput = screen.getByLabelText("productName");
     fireEvent.change(productNameInput, { target: { value: "Product A" } });
 
     const productQuantityInput = screen.getByLabelText("product quantity");
