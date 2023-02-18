@@ -13,6 +13,7 @@ import {
 } from "@chakra-ui/react";
 import { FormData } from "./Form";
 import { FaTrash } from "react-icons/all";
+import { NumericFormat } from "react-number-format";
 
 interface AddProductsProps {
   control: Control<FormData>;
@@ -52,8 +53,15 @@ const AddProducts: FC<AddProductsProps> = ({ control, errors, onSubmit }) => {
             name="productQuantity"
             control={control}
             rules={{ required: "Product Quantity is required" }}
-            defaultValue={0}
-            render={({ field }) => <Input placeholder=" " {...field} />}
+            render={({ field }) => (
+              <NumericFormat
+                customInput={Input}
+                placeholder=" "
+                defaultValue={0}
+                thousandSeparator={true}
+                onValueChange={(v) => field.onChange(v.value)}
+              />
+            )}
           />
           <FormLabel htmlFor="productQuantity">Product Quantity</FormLabel>
 
@@ -73,10 +81,19 @@ const AddProducts: FC<AddProductsProps> = ({ control, errors, onSubmit }) => {
             name="productPrice"
             control={control}
             rules={{ required: "Product Price is required" }}
-            defaultValue={0}
-            render={({ field }) => <Input placeholder=" " {...field} />}
+            render={({ field }) => (
+              <NumericFormat
+                customInput={Input}
+                placeholder=" "
+                defaultValue={0}
+                thousandSeparator={true}
+                onValueChange={(v) => field.onChange(v.value)}
+              />
+            )}
           />
+
           <FormLabel htmlFor="productPrice">Product Price</FormLabel>
+
           {errors.productPrice && (
             <Text color="red.500" textAlign="left">
               {errors.productPrice.message}
