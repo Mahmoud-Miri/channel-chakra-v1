@@ -14,7 +14,7 @@ describe("Form", () => {
     // Check for error messages
     await waitFor(() => {
       const errors = screen.queryAllByText(/This field requires a value/i);
-      expect(errors).toHaveLength(5);
+      expect(errors).toHaveLength(6);
     });
   });
 

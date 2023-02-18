@@ -27,7 +27,10 @@ export const schema = yup.object().shape({
     .string()
     .email("Enter a valid email address")
     .required("This field requires a value"),
-  mobile: yup.string().matches(/^\d+$/, "Must be only digits").required(),
+  mobile: yup
+    .string()
+    .required("This field requires a value")
+    .matches(/^\d+$/, "Must be only digits"),
   productName: yup.string().required("This field requires a value"),
   productQuantity: yup
     .number()
