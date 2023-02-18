@@ -12,7 +12,7 @@ import {
   Input,
 } from "@chakra-ui/react";
 import { FormData } from "./Form";
-import { FaTrash } from "react-icons/all";
+import { FaTrash } from "react-icons/fa";
 import { NumericFormat } from "react-number-format";
 
 interface AddProductsProps {
@@ -37,7 +37,12 @@ const AddProducts: FC<AddProductsProps> = ({ control, errors, onSubmit }) => {
             defaultValue=""
             rules={{ required: "Product Name is required" }}
             render={({ field }) => (
-              <Input placeholder=" " id="productName" {...field} />
+              <Input
+                aria-label="product name"
+                placeholder=" "
+                id="productName"
+                {...field}
+              />
             )}
           />
           <FormLabel htmlFor="productName">Product Name</FormLabel>
@@ -54,20 +59,23 @@ const AddProducts: FC<AddProductsProps> = ({ control, errors, onSubmit }) => {
             name="productQuantity"
             control={control}
             rules={{ required: "Product Quantity is required" }}
-            defaultValue={0}
+            defaultValue={1}
             render={({ field }) => (
               <NumericFormat
                 customInput={Input}
                 placeholder=" "
-                defaultValue={0}
+                defaultValue={1}
                 allowNegative={false}
                 thousandSeparator={true}
                 onValueChange={(v) => field.onChange(v.value)}
+                aria-label="product quantity"
               />
             )}
           />
           <FormLabel htmlFor="productQuantity">Product Quantity</FormLabel>
-          <FormErrorMessage>{errors.productQuantity?.message}</FormErrorMessage>
+          <FormErrorMessage aria-roledescription="alert">
+            {errors.productQuantity?.message}
+          </FormErrorMessage>
         </FormControl>
 
         <FormControl
@@ -88,6 +96,7 @@ const AddProducts: FC<AddProductsProps> = ({ control, errors, onSubmit }) => {
                 defaultValue={0}
                 thousandSeparator={true}
                 onValueChange={(v) => field.onChange(v.value)}
+                aria-label="product price"
               />
             )}
           />

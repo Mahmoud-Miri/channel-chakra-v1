@@ -29,7 +29,9 @@ const CustomerInfo = ({ control, errors }: CustomerInfoProps) => {
             control={control}
             defaultValue=""
             rules={{ required: "Name is required" }}
-            render={({ field }) => <Input placeholder=" " {...field} />}
+            render={({ field }) => (
+              <Input aria-label="name" placeholder=" " {...field} />
+            )}
           />
           <FormLabel htmlFor="name">Name</FormLabel>
           <FormErrorMessage>{errors.name?.message}</FormErrorMessage>
@@ -41,7 +43,9 @@ const CustomerInfo = ({ control, errors }: CustomerInfoProps) => {
             control={control}
             defaultValue=""
             rules={{ required: "Surname is required" }}
-            render={({ field }) => <Input placeholder=" " {...field} />}
+            render={({ field }) => (
+              <Input aria-label="surname" placeholder=" " {...field} />
+            )}
           />
           <FormLabel htmlFor="surname">Surname</FormLabel>
           <FormErrorMessage>{errors.surname?.message}</FormErrorMessage>
@@ -60,7 +64,12 @@ const CustomerInfo = ({ control, errors }: CustomerInfoProps) => {
             defaultValue=""
             rules={{ required: "Email is required" }}
             render={({ field }) => (
-              <Input placeholder=" " type="email" {...field} />
+              <Input
+                aria-label="email"
+                placeholder=" "
+                type="email"
+                {...field}
+              />
             )}
           />
           <FormLabel htmlFor="email">Email</FormLabel>
@@ -74,7 +83,12 @@ const CustomerInfo = ({ control, errors }: CustomerInfoProps) => {
             defaultValue=""
             rules={{ required: "Mobile number is required" }}
             render={({ field }) => (
-              <Input placeholder=" " type="tel" {...field} />
+              <Input
+                aria-label="mobile"
+                placeholder=" "
+                type="tel"
+                {...field}
+              />
             )}
           />
           <FormLabel htmlFor="mobile">Mobile Number</FormLabel>

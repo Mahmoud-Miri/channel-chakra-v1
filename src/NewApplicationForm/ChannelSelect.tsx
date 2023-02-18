@@ -27,7 +27,7 @@ const ChannelSelect = ({ control, errors }: ChannelSelectProps) => {
         rules={{ required: "Channel is required" }}
         render={({ field }) => (
           <Select
-            aria-label="Channels"
+            aria-label="channel"
             placeholder="Select a channel"
             {...field}
           >
