@@ -35,11 +35,7 @@ const NewApplicationForm = () => {
             <ChannelSelect control={control} errors={errors} />
           </Card>
           <Card title="Add Products">
-            <AddProducts
-              control={control}
-              errors={errors}
-              onSubmit={() => console.log("button pressed")}
-            />
+            <AddProducts control={control} errors={errors} />
           </Card>
           <Card title="Customer Information">
             <CustomerInfo control={control} errors={errors} />

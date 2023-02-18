@@ -8,7 +8,6 @@ import {
   FormControl,
   FormErrorMessage,
   FormLabel,
-  HStack,
   Icon,
   Input,
 } from "@chakra-ui/react";
@@ -20,13 +19,12 @@ import FormTextField from "./FormTextField";
 interface AddProductsProps {
   control: Control<NewApplicationFormData>;
   errors: FieldErrors<NewApplicationFormData>;
-  onSubmit: () => void;
 }
 
-const AddProducts: FC<AddProductsProps> = ({ control, errors, onSubmit }) => {
+const AddProducts: FC<AddProductsProps> = ({ control, errors }) => {
   return (
     <>
-      <HStack spacing={4} mt={2}>
+      <Flex>
         <FormTextField
           name="productName"
           label="Product Name"
@@ -101,12 +99,17 @@ const AddProducts: FC<AddProductsProps> = ({ control, errors, onSubmit }) => {
         >
           <Icon as={FaTrash} />
         </Button>
-      </HStack>
+      </Flex>
 
       <Divider mt={4} />
 
       <Flex>
-        <Button onClick={onSubmit} mt={4} size="md" colorScheme="blue">
+        <Button
+          onClick={() => console.log("Add Product was pressed!")}
+          mt={4}
+          size="md"
+          colorScheme="blue"
+        >
           Add Product
         </Button>
       </Flex>
