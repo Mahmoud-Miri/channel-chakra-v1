@@ -10,8 +10,8 @@ interface CustomerInfoProps {
 
 const CustomerInfo = ({ control, errors }: CustomerInfoProps) => {
   return (
-    <Stack spacing={4} mt={2}>
-      <Flex>
+    <Stack spacing={4} my={2}>
+      <Flex gap={4} mb={2}>
         <FormTextField
           name="name"
           label="Name"
@@ -33,7 +33,7 @@ const CustomerInfo = ({ control, errors }: CustomerInfoProps) => {
         />
       </Flex>
 
-      <Flex>
+      <Flex gap={4}>
         <FormTextField
           name="email"
           label="Email"

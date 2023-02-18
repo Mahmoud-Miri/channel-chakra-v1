@@ -31,7 +31,6 @@ const FormTextField = ({
       isInvalid={!!errors[name]}
       isRequired={isRequired}
       variant="floating"
-      mr={4}
     >
       <Controller
         name={name}

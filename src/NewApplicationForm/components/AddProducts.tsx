@@ -24,7 +24,7 @@ interface AddProductsProps {
 const AddProducts: FC<AddProductsProps> = ({ control, errors }) => {
   return (
     <>
-      <Flex>
+      <Flex gap={4}>
         <FormTextField
           name="productName"
           label="Product Name"
@@ -37,7 +37,6 @@ const AddProducts: FC<AddProductsProps> = ({ control, errors }) => {
 
         <FormControl
           isInvalid={!!errors.productQuantity}
-          mr={4}
           isRequired
           variant="floating"
         >
@@ -95,7 +94,6 @@ const AddProducts: FC<AddProductsProps> = ({ control, errors }) => {
           onClick={() => console.log("")}
           colorScheme="red"
           variant="ghost"
-          ml={2}
         >
           <Icon as={FaTrash} />
         </Button>
