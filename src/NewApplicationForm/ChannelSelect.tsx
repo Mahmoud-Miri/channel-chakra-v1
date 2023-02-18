@@ -1,4 +1,9 @@
-import { Box, FormControl, FormLabel, Select, Text } from "@chakra-ui/react";
+import {
+  FormControl,
+  FormErrorMessage,
+  FormLabel,
+  Select,
+} from "@chakra-ui/react";
 import { Control, Controller, FieldErrors } from "react-hook-form";
 import { FormData } from "./Form";
 
@@ -34,14 +39,7 @@ const ChannelSelect = ({ control, errors }: ChannelSelectProps) => {
         )}
       />
       <FormLabel>Channel</FormLabel>
-
-      {errors.channel && (
-        <Box alignSelf="">
-          <Text textAlign="left" color="red.500">
-            {errors.channel.message}
-          </Text>
-        </Box>
-      )}
+      <FormErrorMessage>{errors.channel?.message}</FormErrorMessage>
     </FormControl>
   );
 };

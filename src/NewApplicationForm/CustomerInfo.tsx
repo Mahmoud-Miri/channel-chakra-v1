@@ -1,10 +1,10 @@
 import {
   Flex,
   FormControl,
+  FormErrorMessage,
   FormLabel,
   Input,
   Stack,
-  Text,
 } from "@chakra-ui/react";
 import { Control, Controller, FieldErrors } from "react-hook-form";
 import { FormData } from "./Form";
@@ -32,12 +32,7 @@ const CustomerInfo = ({ control, errors }: CustomerInfoProps) => {
             render={({ field }) => <Input placeholder=" " {...field} />}
           />
           <FormLabel htmlFor="name">Name</FormLabel>
-
-          {errors.name && (
-            <Text color="red.500" textAlign="left">
-              {errors.name.message}
-            </Text>
-          )}
+          <FormErrorMessage>{errors.name?.message}</FormErrorMessage>
         </FormControl>
 
         <FormControl isInvalid={!!errors.surname} isRequired variant="floating">
@@ -49,12 +44,7 @@ const CustomerInfo = ({ control, errors }: CustomerInfoProps) => {
             render={({ field }) => <Input placeholder=" " {...field} />}
           />
           <FormLabel htmlFor="surname">Surname</FormLabel>
-
-          {errors.surname && (
-            <Text color="red.500" textAlign="left">
-              {errors.surname.message}
-            </Text>
-          )}
+          <FormErrorMessage>{errors.surname?.message}</FormErrorMessage>
         </FormControl>
       </Flex>
       <Flex>
@@ -74,12 +64,7 @@ const CustomerInfo = ({ control, errors }: CustomerInfoProps) => {
             )}
           />
           <FormLabel htmlFor="email">Email</FormLabel>
-
-          {errors.email && (
-            <Text textAlign="left" color="red.500">
-              {errors.email.message}
-            </Text>
-          )}
+          <FormErrorMessage>{errors.email?.message}</FormErrorMessage>
         </FormControl>
 
         <FormControl isInvalid={!!errors.mobile} isRequired variant="floating">
@@ -93,12 +78,7 @@ const CustomerInfo = ({ control, errors }: CustomerInfoProps) => {
             )}
           />
           <FormLabel htmlFor="mobile">Mobile Number</FormLabel>
-
-          {errors.mobile && (
-            <Text textAlign="left" color="red.500">
-              {errors.mobile.message}
-            </Text>
-          )}
+          <FormErrorMessage>{errors.mobile?.message}</FormErrorMessage>
         </FormControl>
       </Flex>
     </Stack>

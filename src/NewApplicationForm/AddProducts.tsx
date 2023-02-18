@@ -6,10 +6,10 @@ import {
   Divider,
   Flex,
   FormControl,
+  FormErrorMessage,
   FormLabel,
   Icon,
   Input,
-  Text,
 } from "@chakra-ui/react";
 import { FormData } from "./Form";
 import { FaTrash } from "react-icons/all";
@@ -25,7 +25,12 @@ const AddProducts: FC<AddProductsProps> = ({ control, errors, onSubmit }) => {
   return (
     <>
       <Flex>
-        <FormControl mr={4} isRequired variant="floating">
+        <FormControl
+          mr={4}
+          isRequired
+          variant="floating"
+          isInvalid={!!errors.productName}
+        >
           <Controller
             name="productName"
             control={control}
@@ -36,11 +41,7 @@ const AddProducts: FC<AddProductsProps> = ({ control, errors, onSubmit }) => {
             )}
           />
           <FormLabel htmlFor="productName">Product Name</FormLabel>
-          {errors.productName && (
-            <Text color="red.500" textAlign="left">
-              {errors.productName.message}
-            </Text>
-          )}
+          <FormErrorMessage>{errors.productName?.message}</FormErrorMessage>
         </FormControl>
 
         <FormControl
@@ -53,23 +54,20 @@ const AddProducts: FC<AddProductsProps> = ({ control, errors, onSubmit }) => {
             name="productQuantity"
             control={control}
             rules={{ required: "Product Quantity is required" }}
+            defaultValue={0}
             render={({ field }) => (
               <NumericFormat
                 customInput={Input}
                 placeholder=" "
                 defaultValue={0}
+                allowNegative={false}
                 thousandSeparator={true}
                 onValueChange={(v) => field.onChange(v.value)}
               />
             )}
           />
           <FormLabel htmlFor="productQuantity">Product Quantity</FormLabel>
-
-          {errors.productQuantity && (
-            <Text color="red.500" textAlign="left">
-              {errors.productQuantity.message}
-            </Text>
-          )}
+          <FormErrorMessage>{errors.productQuantity?.message}</FormErrorMessage>
         </FormControl>
 
         <FormControl
@@ -78,6 +76,7 @@ const AddProducts: FC<AddProductsProps> = ({ control, errors, onSubmit }) => {
           variant="floating"
         >
           <Controller
+            defaultValue={0}
             name="productPrice"
             control={control}
             rules={{ required: "Product Price is required" }}
@@ -85,6 +84,7 @@ const AddProducts: FC<AddProductsProps> = ({ control, errors, onSubmit }) => {
               <NumericFormat
                 customInput={Input}
                 placeholder=" "
+                allowNegative={false}
                 defaultValue={0}
                 thousandSeparator={true}
                 onValueChange={(v) => field.onChange(v.value)}
@@ -93,12 +93,7 @@ const AddProducts: FC<AddProductsProps> = ({ control, errors, onSubmit }) => {
           />
 
           <FormLabel htmlFor="productPrice">Product Price</FormLabel>
-
-          {errors.productPrice && (
-            <Text color="red.500" textAlign="left">
-              {errors.productPrice.message}
-            </Text>
-          )}
+          <FormErrorMessage>{errors.productPrice?.message}</FormErrorMessage>
         </FormControl>
 
         <Button

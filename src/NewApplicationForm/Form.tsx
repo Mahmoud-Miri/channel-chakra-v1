@@ -20,14 +20,25 @@ export interface FormData {
 }
 
 export const schema = yup.object().shape({
-  name: yup.string().required(),
-  surname: yup.string().required(),
-  channel: yup.string().required(),
-  email: yup.string().email().required(),
+  name: yup.string().required("This field requires a value"),
+  surname: yup.string().required("This field requires a value"),
+  channel: yup.string().required("This field requires a value"),
+  email: yup
+    .string()
+    .email("Enter a valid email address")
+    .required("This field requires a value"),
   mobile: yup.string().matches(/^\d+$/, "Must be only digits").required(),
-  productName: yup.string().required(),
-  productQuantity: yup.number().required(),
-  productPrice: yup.number().required(),
+  productName: yup.string().required("This field requires a value"),
+  productQuantity: yup
+    .number()
+    .positive("Enter a positive value")
+    .required("This field requires a value")
+    .typeError("A numerical value is required"),
+  productPrice: yup
+    .number()
+    .min(0, "Enter a non-negative number")
+    .required("This field requires a value")
+    .typeError("A numerical value is required"),
 });
 
 const Form = () => {
