@@ -1,11 +1,11 @@
 import { screen, fireEvent, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import Form from "./Form";
+import { NewApplicationForm } from ".";
 import { render } from "../test-utils";
 
-describe("Form", () => {
+describe("NewApplicationForm", () => {
   test("displays error messages when form is submitted with invalid data", async () => {
-    render(<Form />);
+    render(<NewApplicationForm />);
 
     // Submit form with invalid data
     const submitButton = screen.getByText("Create Application");
@@ -19,7 +19,7 @@ describe("Form", () => {
   });
 
   test("submits form with valid data", async () => {
-    render(<Form />);
+    render(<NewApplicationForm />);
 
     // Fill in form fields with valid data
     const nameInput = screen.getByLabelText("name");
@@ -51,7 +51,9 @@ describe("Form", () => {
     userEvent.click(submitButton);
 
     // Check for success message
-    const successMessage = await screen.findByText("Form submitted");
+    const successMessage = await screen.findByText(
+      "NewApplicationForm submitted"
+    );
     expect(successMessage).toBeInTheDocument();
 
     //Validate that the form data is correct when the form is submitted

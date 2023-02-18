@@ -11,13 +11,13 @@ import {
   Icon,
   Input,
 } from "@chakra-ui/react";
-import { FormData } from "./Form";
 import { FaTrash } from "react-icons/fa";
 import { NumericFormat } from "react-number-format";
+import { NewApplicationFormData } from "../types";
 
 interface AddProductsProps {
-  control: Control<FormData>;
-  errors: FieldErrors<FormData>;
+  control: Control<NewApplicationFormData>;
+  errors: FieldErrors<NewApplicationFormData>;
   onSubmit: () => void;
 }
 

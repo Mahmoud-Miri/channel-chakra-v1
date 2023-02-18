@@ -5,11 +5,11 @@ import {
   Select,
 } from "@chakra-ui/react";
 import { Control, Controller, FieldErrors } from "react-hook-form";
-import { FormData } from "./Form";
+import { NewApplicationFormData } from "../types";
 
 interface ChannelSelectProps {
-  control: Control<FormData>;
-  errors: FieldErrors<FormData>;
+  control: Control<NewApplicationFormData>;
+  errors: FieldErrors<NewApplicationFormData>;
 }
 
 const ChannelSelect = ({ control, errors }: ChannelSelectProps) => {
