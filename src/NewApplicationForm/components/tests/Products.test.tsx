@@ -48,4 +48,10 @@ describe("<Products />", () => {
     expect(screen.getAllByText("Product Quantity")).toHaveLength(1);
     expect(screen.getAllByText("Product Price")).toHaveLength(1);
   });
+
+  it("should disable the 'Delete' button when there is only one product", () => {
+    render(<ProductsWrapper />);
+    const deleteProductButton = screen.getByLabelText("products.0.delete");
+    expect(deleteProductButton).toBeDisabled();
+  });
 });
