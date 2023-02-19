@@ -20,7 +20,7 @@ const NewApplicationForm = () => {
   });
 
   const {
-    fields: productFields,
+    fields: products,
     append,
     remove,
   } = useFieldArray({
@@ -48,7 +48,7 @@ const NewApplicationForm = () => {
 
           <Card title="Add Products">
             <Products
-              productFields={productFields}
+              products={products}
               control={control}
               errors={errors}
               remove={remove}
