@@ -1,4 +1,4 @@
-import React, { FC, ReactNode } from "react";
+import React, { ReactNode } from "react";
 import { Box, Divider, Text } from "@chakra-ui/react";
 
 type CardProps = {
@@ -6,7 +6,7 @@ type CardProps = {
   children: ReactNode;
 };
 
-const Card: FC<CardProps> = ({ title, children }) => {
+const Card = ({ title, children }: CardProps) => {
   return (
     <Box
       borderWidth="1px"
