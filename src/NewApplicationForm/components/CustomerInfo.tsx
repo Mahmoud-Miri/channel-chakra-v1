@@ -16,20 +16,22 @@ const CustomerInfo = ({ control, errors }: CustomerInfoProps) => {
           name="name"
           label="Name"
           control={control}
-          errors={errors}
           placeholder=" "
           isRequired
           rules={{ required: "Name is required" }}
+          isInvalid={!!errors?.name?.message}
+          errorMessage={errors?.name?.message}
         />
 
         <FormTextField
           name="surname"
           label="Surname"
           control={control}
-          errors={errors}
           placeholder=" "
           isRequired
           rules={{ required: "Surname is required" }}
+          isInvalid={!!errors?.surname?.message}
+          errorMessage={errors?.surname?.message}
         />
       </Flex>
 
@@ -38,20 +40,22 @@ const CustomerInfo = ({ control, errors }: CustomerInfoProps) => {
           name="email"
           label="Email"
           control={control}
-          errors={errors}
           placeholder=" "
           isRequired
           rules={{ required: "Email is required" }}
+          isInvalid={!!errors?.email?.message}
+          errorMessage={errors?.email?.message}
         />
 
         <FormTextField
           name="mobile"
           label="Mobile"
           control={control}
-          errors={errors}
           placeholder=" "
           isRequired
           rules={{ required: "Mobile number is required" }}
+          isInvalid={!!errors?.mobile?.message}
+          errorMessage={errors?.mobile?.message}
         />
       </Flex>
     </Stack>

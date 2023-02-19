@@ -4,31 +4,33 @@ import {
   FormLabel,
   Input,
 } from "@chakra-ui/react";
-import { Control, Controller, FieldErrors } from "react-hook-form";
+import { Control, Controller } from "react-hook-form";
 import { NewApplicationFormData } from "../types";
 
 interface FormFieldProps {
-  name: keyof NewApplicationFormData;
+  name: string;
   label: string;
   control: Control<NewApplicationFormData>;
-  errors: FieldErrors<NewApplicationFormData>;
   placeholder?: string;
   isRequired?: boolean;
   rules?: Record<string, any>;
+  isInvalid: boolean;
+  errorMessage: string | undefined;
 }
 
 const FormTextField = ({
   name,
   label,
   control,
-  errors,
   placeholder,
   isRequired,
   rules,
+  isInvalid,
+  errorMessage,
 }: FormFieldProps) => {
   return (
     <FormControl
-      isInvalid={!!errors[name]}
+      isInvalid={isInvalid}
       isRequired={isRequired}
       variant="floating"
     >
@@ -38,11 +40,17 @@ const FormTextField = ({
         rules={rules}
         defaultValue=""
         render={({ field }) => (
-          <Input aria-label={name} placeholder={placeholder} {...field} />
+          <Input
+            aria-label={name}
+            placeholder={placeholder}
+            value={field.value as string}
+            onChange={field.onChange}
+            onBlur={field.onBlur}
+          />
         )}
       />
       <FormLabel htmlFor={name}>{label}</FormLabel>
-      <FormErrorMessage>{errors[name]?.message}</FormErrorMessage>
+      <FormErrorMessage>{errorMessage}</FormErrorMessage>
     </FormControl>
   );
 };
