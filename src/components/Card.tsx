@@ -1,9 +1,9 @@
-import React, { FC, ReactElement } from "react";
+import React, { FC, ReactNode } from "react";
 import { Box, Divider, Text } from "@chakra-ui/react";
 
 type CardProps = {
   title: string;
-  children: ReactElement;
+  children: ReactNode;
 };
 
 const Card: FC<CardProps> = ({ title, children }) => {
