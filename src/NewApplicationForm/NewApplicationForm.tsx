@@ -1,4 +1,4 @@
-import { useFieldArray, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 
 import { Box, Button, Stack, useToast } from "@chakra-ui/react";
@@ -17,15 +17,6 @@ const NewApplicationForm = () => {
   } = useForm<NewApplicationFormData>({
     resolver: yupResolver(newApplicationFormValidationSchema),
     defaultValues: { products: [{ name: "", quantity: 1, price: 0 }] },
-  });
-
-  const {
-    fields: products,
-    append,
-    remove,
-  } = useFieldArray({
-    control,
-    name: "products",
   });
 
   const onSubmit = (data: NewApplicationFormData) => {
@@ -47,13 +38,7 @@ const NewApplicationForm = () => {
           </Card>
 
           <Card title="Add Products">
-            <Products
-              products={products}
-              control={control}
-              errors={errors}
-              remove={remove}
-              append={append}
-            />
+            <Products control={control} errors={errors} />
           </Card>
 
           <Card title="Customer Information">

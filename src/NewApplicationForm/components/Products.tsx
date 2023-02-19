@@ -4,7 +4,7 @@ import {
   Controller,
   FieldArrayWithId,
   FieldErrors,
-  UseFieldArrayAppend,
+  useFieldArray,
 } from "react-hook-form";
 import {
   Button,
@@ -21,20 +21,20 @@ import FormTextField from "./FormTextField";
 import { NumericFormat } from "react-number-format";
 import { FaTrash } from "react-icons/fa";
 
-interface ProductFieldsProps {
-  products: FieldArrayWithId<NewApplicationFormData, "products", "id">[];
+interface ProductsProps {
   control: Control<NewApplicationFormData>;
   errors: FieldErrors<NewApplicationFormData>;
-  remove: (index: number) => void;
-  append: UseFieldArrayAppend<NewApplicationFormData, "products">;
 }
-const Products = ({
-  products,
-  control,
-  errors,
-  remove,
-  append,
-}: ProductFieldsProps) => {
+const Products = ({ control, errors }: ProductsProps) => {
+  const {
+    fields: products,
+    append,
+    remove,
+  } = useFieldArray({
+    control,
+    name: "products",
+  });
+
   return (
     <Stack spacing={4}>
       {products.map(
