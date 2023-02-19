@@ -120,6 +120,7 @@ const Products = ({ control, errors }: ProductsProps) => {
               colorScheme="red"
               variant="ghost"
               disabled={products.length < 2}
+              aria-label={`products.${index}.delete`}
             >
               <Icon as={FaTrash} />
             </Button>
