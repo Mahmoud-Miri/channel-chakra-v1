@@ -37,13 +37,13 @@ describe("NewApplicationForm", () => {
     const channelSelect = screen.getByLabelText("channel");
     fireEvent.change(channelSelect, { target: { value: "email" } });
 
-    const productNameInput = screen.getByLabelText("productName");
+    const productNameInput = screen.getByLabelText("products.0.name");
     fireEvent.change(productNameInput, { target: { value: "Product A" } });
 
-    const productQuantityInput = screen.getByLabelText("product quantity");
+    const productQuantityInput = screen.getByLabelText("products.0.quantity");
     fireEvent.change(productQuantityInput, { target: { value: "5" } });
 
-    const productPriceInput = screen.getByLabelText("product price");
+    const productPriceInput = screen.getByLabelText("products.0.price");
     fireEvent.change(productPriceInput, { target: { value: "10.99" } });
 
     // Submit form
@@ -70,9 +70,7 @@ describe("NewApplicationForm", () => {
       surname: "Doe",
       email: "john.doe@example.com",
       mobile: "1234567890",
-      productName: "Product A",
-      productQuantity: 5,
-      productPrice: 10.99,
+      products: [{ name: "Product A", quantity: 5, price: 10.99 }],
     });
   });
 });

@@ -124,7 +124,7 @@ const NewApplicationForm = () => {
                           defaultValue={0}
                           thousandSeparator={true}
                           onValueChange={(v) => field.onChange(v.value)}
-                          aria-label="`products.${index}.price`"
+                          aria-label={`products.${index}.price`}
                         />
                       )}
                     />
