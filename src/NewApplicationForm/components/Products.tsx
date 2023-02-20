@@ -49,7 +49,6 @@ const Products = ({ control, errors }: ProductsProps) => {
               control={control}
               placeholder=" "
               isRequired
-              rules={{ required: "Product Name is required" }}
               isInvalid={!!errors?.products?.[index]?.name?.message}
               errorMessage={errors?.products?.[index]?.name?.message}
             />
@@ -62,7 +61,6 @@ const Products = ({ control, errors }: ProductsProps) => {
               <Controller
                 name={`products.${index}.quantity`}
                 control={control}
-                rules={{ required: "Product Quantity is required" }}
                 defaultValue={1}
                 render={({ field }) => (
                   <NumericFormat
@@ -93,7 +91,6 @@ const Products = ({ control, errors }: ProductsProps) => {
                 defaultValue={0}
                 name={`products.${index}.price`}
                 control={control}
-                rules={{ required: "Product Price is required" }}
                 render={({ field }) => (
                   <NumericFormat
                     customInput={Input}

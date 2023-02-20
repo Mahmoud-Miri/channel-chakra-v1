@@ -24,7 +24,6 @@ const ChannelSelect = ({ control, errors }: ChannelSelectProps) => {
         name="channel"
         control={control}
         defaultValue=""
-        rules={{ required: "Channel is required" }}
         render={({ field }) => (
           <Select
             aria-label="channel"

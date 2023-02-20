@@ -17,6 +17,7 @@ const NewApplicationForm = () => {
   } = useForm<NewApplicationFormData>({
     resolver: yupResolver(newApplicationFormValidationSchema),
     defaultValues: { products: [{ name: "", quantity: 1, price: 0 }] },
+    mode: "onBlur",
   });
 
   const onSubmit = (data: NewApplicationFormData) => {

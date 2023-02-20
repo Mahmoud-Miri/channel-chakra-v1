@@ -18,7 +18,6 @@ const CustomerInfo = ({ control, errors }: CustomerInfoProps) => {
           control={control}
           placeholder=" "
           isRequired
-          rules={{ required: "Name is required" }}
           isInvalid={!!errors?.name?.message}
           errorMessage={errors?.name?.message}
         />
@@ -29,7 +28,6 @@ const CustomerInfo = ({ control, errors }: CustomerInfoProps) => {
           control={control}
           placeholder=" "
           isRequired
-          rules={{ required: "Surname is required" }}
           isInvalid={!!errors?.surname?.message}
           errorMessage={errors?.surname?.message}
         />
@@ -42,7 +40,6 @@ const CustomerInfo = ({ control, errors }: CustomerInfoProps) => {
           control={control}
           placeholder=" "
           isRequired
-          rules={{ required: "Email is required" }}
           isInvalid={!!errors?.email?.message}
           errorMessage={errors?.email?.message}
         />
@@ -53,7 +50,6 @@ const CustomerInfo = ({ control, errors }: CustomerInfoProps) => {
           control={control}
           placeholder=" "
           isRequired
-          rules={{ required: "Mobile number is required" }}
           isInvalid={!!errors?.mobile?.message}
           errorMessage={errors?.mobile?.message}
         />

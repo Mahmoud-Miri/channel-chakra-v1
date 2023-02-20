@@ -13,7 +13,6 @@ interface FormFieldProps {
   control: Control<NewApplicationFormData>;
   placeholder?: string;
   isRequired?: boolean;
-  rules?: Record<string, any>;
   isInvalid: boolean;
   errorMessage: string | undefined;
 }
@@ -24,7 +23,6 @@ const FormTextField = ({
   control,
   placeholder,
   isRequired,
-  rules,
   isInvalid,
   errorMessage,
 }: FormFieldProps) => {
@@ -37,7 +35,6 @@ const FormTextField = ({
       <Controller
         name={name}
         control={control}
-        rules={rules}
         defaultValue=""
         render={({ field }) => (
           <Input
