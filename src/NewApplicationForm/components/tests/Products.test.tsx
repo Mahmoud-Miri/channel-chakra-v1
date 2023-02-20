@@ -86,4 +86,47 @@ describe("<Products />", () => {
     const errorMessage = await screen.findByText("This field requires a value");
     expect(errorMessage).toBeVisible();
   });
+
+  it("should display an error message when no product quantity is provided", async () => {
+    render(<ProductsWrapper />);
+
+    // Set the product quantity to an empty string
+    const productQuantityInput = screen.getByLabelText("products.0.quantity");
+    fireEvent.change(productQuantityInput, { target: { value: "" } });
+    fireEvent.blur(productQuantityInput);
+
+    // Ensure that the error message is displayed
+    const errorMessage = await screen.findByText(
+      "A numerical value is required"
+    );
+    expect(errorMessage).toBeVisible();
+  });
+
+  it("should display an error message product quantity is set to 0", async () => {
+    render(<ProductsWrapper />);
+
+    // Set the product quantity to an empty string
+    const productQuantityInput = screen.getByLabelText("products.0.quantity");
+    fireEvent.change(productQuantityInput, { target: { value: 0 } });
+    fireEvent.blur(productQuantityInput);
+
+    // Ensure that the error message is displayed
+    const errorMessage = await screen.findByText("Enter a positive value");
+    expect(errorMessage).toBeVisible();
+  });
+
+  it("should display an error message when no product price is provided", async () => {
+    render(<ProductsWrapper />);
+
+    // Set the product price to an empty string
+    const productPriceInput = screen.getByLabelText("products.0.price");
+    fireEvent.change(productPriceInput, { target: { value: "" } });
+    fireEvent.blur(productPriceInput);
+
+    // Ensure that the error message is displayed
+    const errorMessage = await screen.findByText(
+      "A numerical value is required"
+    );
+    expect(errorMessage).toBeVisible();
+  });
 });

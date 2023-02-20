@@ -70,6 +70,7 @@ const Products = ({ control, errors }: ProductsProps) => {
                     allowNegative={false}
                     thousandSeparator={true}
                     onValueChange={(v) => field.onChange(v.value)}
+                    onBlur={field.onBlur}
                     aria-label={`products.${index}.quantity`}
                   />
                 )}
@@ -99,6 +100,7 @@ const Products = ({ control, errors }: ProductsProps) => {
                     defaultValue={0}
                     thousandSeparator={true}
                     onValueChange={(v) => field.onChange(v.value)}
+                    onBlur={field.onBlur}
                     aria-label={`products.${index}.price`}
                   />
                 )}
