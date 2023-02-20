@@ -102,7 +102,7 @@ const Products = ({ control, errors }: ProductsProps) => {
                 )}
               />
               <FormLabel htmlFor={`products.${index}.quantity`}>
-                Product Quantity
+                Quantity
               </FormLabel>
               <FormErrorMessage aria-roledescription="alert">
                 {errors?.products?.[index]?.quantity?.message}
@@ -133,9 +133,7 @@ const Products = ({ control, errors }: ProductsProps) => {
                 )}
               />
 
-              <FormLabel htmlFor={`products.${index}.price`}>
-                Product Price
-              </FormLabel>
+              <FormLabel htmlFor={`products.${index}.price`}>Price</FormLabel>
               <FormErrorMessage>
                 {errors?.products?.[index]?.price?.message}
               </FormErrorMessage>

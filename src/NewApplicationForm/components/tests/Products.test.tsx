@@ -30,8 +30,8 @@ describe("<Products />", () => {
     render(<ProductsWrapper />);
 
     expect(screen.getByText("Product Name")).toBeVisible();
-    expect(screen.getByText("Product Quantity")).toBeVisible();
-    expect(screen.getByText("Product Price")).toBeVisible();
+    expect(screen.getByText("Quantity")).toBeVisible();
+    expect(screen.getByText("Price")).toBeVisible();
     expect(screen.getByText("Add Product")).toBeVisible();
   });
 
@@ -42,8 +42,8 @@ describe("<Products />", () => {
     fireEvent.click(addProductButton);
 
     expect(screen.getAllByText("Product Name")).toHaveLength(2);
-    expect(screen.getAllByText("Product Quantity")).toHaveLength(2);
-    expect(screen.getAllByText("Product Price")).toHaveLength(2);
+    expect(screen.getAllByText("Quantity")).toHaveLength(2);
+    expect(screen.getAllByText("Price")).toHaveLength(2);
   });
 
   it("should remove a product when 'Delete' button is clicked", () => {
@@ -56,8 +56,8 @@ describe("<Products />", () => {
     fireEvent.click(deleteProductButton);
 
     expect(screen.getAllByText("Product Name")).toHaveLength(1);
-    expect(screen.getAllByText("Product Quantity")).toHaveLength(1);
-    expect(screen.getAllByText("Product Price")).toHaveLength(1);
+    expect(screen.getAllByText("Quantity")).toHaveLength(1);
+    expect(screen.getAllByText("Price")).toHaveLength(1);
   });
 
   it("should disable the 'Delete' button when there is only one product", () => {
