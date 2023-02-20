@@ -5,6 +5,7 @@ import {
   FieldArrayWithId,
   FieldErrors,
   useFieldArray,
+  useWatch,
 } from "react-hook-form";
 import {
   Button,
@@ -16,16 +17,26 @@ import {
   Icon,
   Input,
   Stack,
+  Text,
 } from "@chakra-ui/react";
 import FormTextField from "./FormTextField";
 import { NumericFormat } from "react-number-format";
 import { FaTrash } from "react-icons/fa";
+import { useEffect, useState } from "react";
+
+const formatTotalPriceWithThousandSeparator = (totalPrice: Number) =>
+  totalPrice
+    .toFixed(2)
+    .toString()
+    .replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
 interface ProductsProps {
   control: Control<NewApplicationFormData>;
   errors: FieldErrors<NewApplicationFormData>;
 }
 const Products = ({ control, errors }: ProductsProps) => {
+  const [totalPrice, setTotalPrice] = useState(0);
+
   const {
     fields: products,
     append,
@@ -34,6 +45,14 @@ const Products = ({ control, errors }: ProductsProps) => {
     control,
     name: "products",
   });
+
+  const productsWatch = useWatch({ control: control, name: "products" });
+
+  useEffect(() => {
+    setTotalPrice(
+      productsWatch.reduce((sum, product) => sum + Number(product.price), 0)
+    );
+  }, [productsWatch]);
 
   return (
     <Stack spacing={4}>
@@ -97,6 +116,7 @@ const Products = ({ control, errors }: ProductsProps) => {
                     customInput={Input}
                     placeholder=" "
                     allowNegative={false}
+                    decimalScale={2}
                     defaultValue={0}
                     thousandSeparator={true}
                     onValueChange={(v) => field.onChange(v.value)}
@@ -129,7 +149,7 @@ const Products = ({ control, errors }: ProductsProps) => {
 
       <Divider />
 
-      <Flex>
+      <Flex justifyContent="space-between" alignItems="center">
         <Button
           onClick={async () => append({ name: "", quantity: 1, price: 0 })}
           size="md"
@@ -137,6 +157,13 @@ const Products = ({ control, errors }: ProductsProps) => {
         >
           Add Product
         </Button>
+
+        <Text
+          fontSize={"md"}
+          fontWeight={"bold"}
+        >{`Total Price: ${formatTotalPriceWithThousandSeparator(
+          totalPrice
+        )}`}</Text>
       </Flex>
     </Stack>
   );
