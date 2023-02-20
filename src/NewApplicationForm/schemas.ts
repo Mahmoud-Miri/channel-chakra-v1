@@ -19,13 +19,13 @@ export const newApplicationFormValidationSchema = yup.object().shape({
         name: yup.string().required("This field requires a value"),
         quantity: yup
           .number()
-          .positive("Enter a positive value")
           .required("This field requires a value")
+          .positive("Enter a positive value")
           .typeError("A numerical value is required"),
         price: yup
           .number()
-          .min(0, "Enter a non-negative number")
           .required("This field requires a value")
+          .min(0, "Enter a non-negative number")
           .typeError("A numerical value is required"),
       })
     )
