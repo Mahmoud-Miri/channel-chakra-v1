@@ -50,7 +50,11 @@ const Products = ({ control, errors }: ProductsProps) => {
 
   useEffect(() => {
     setTotalPrice(
-      productsWatch.reduce((sum, product) => sum + Number(product.price), 0)
+      productsWatch.reduce(
+        (sum, product) =>
+          sum + Number(product.price) * Number(product.quantity),
+        0
+      )
     );
   }, [productsWatch]);
 
@@ -61,7 +65,10 @@ const Products = ({ control, errors }: ProductsProps) => {
           product: FieldArrayWithId<NewApplicationFormData, "products", "id">,
           index: number
         ) => (
-          <Flex gap={4} key={product.id}>
+          <Flex
+            key={product.id}
+            sx={{ gap: 4, pl: 4, borderLeft: "4px solid blue" }}
+          >
             <FormTextField
               name={`products.${index}.name`}
               label="Product Name"
