@@ -164,8 +164,8 @@ const Products = ({ control, errors }: ProductsProps) => {
         </Button>
 
         <Text
-          fontSize={"md"}
-          fontWeight={"bold"}
+          fontSize="md"
+          fontWeight="semibold"
         >{`Total Price: ${formatTotalPriceWithThousandSeparator(
           totalPrice
         )}`}</Text>
