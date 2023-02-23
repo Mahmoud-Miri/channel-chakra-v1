@@ -1,14 +1,14 @@
 import React, { ComponentType, FunctionComponent } from "react";
-import { Box } from "@chakra-ui/react";
+import Nav from "../../components/Nav";
 
-const withHeader =
+const withNavbar =
   (WrappedComponent: ComponentType): FunctionComponent =>
   (props) =>
     (
       <>
-        <Box bg="red.500" color="white" p={4} />
+        <Nav />
         <WrappedComponent {...props} />
       </>
     );
 
-export default withHeader;
+export default withNavbar;

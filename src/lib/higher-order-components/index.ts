@@ -1,1 +1,1 @@
-export { default as withHeader } from "./WithHeader";
+export { default as withNavbar } from "./WithNavbar";

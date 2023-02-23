@@ -7,7 +7,7 @@ import { NewApplicationFormData } from "./types";
 import { newApplicationFormValidationSchema } from "./schemas";
 import { ChannelSelect, CustomerInfo, Products } from "./components";
 import * as React from "react";
-import { withHeader } from "../lib/higher-order-components";
+import { withNavbar } from "../lib/higher-order-components";
 
 const NewApplicationForm = () => {
   const toast = useToast();
@@ -62,4 +62,4 @@ const NewApplicationForm = () => {
   );
 };
 
-export default withHeader(NewApplicationForm);
+export default withNavbar(NewApplicationForm);
